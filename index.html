@@ -1,78 +1,269 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Construindo DIVS </title>
-<link rel="stylesheet" href="css/estilo.css">
+    <title>Mimos da Anna</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#000000">
+    <link rel="icon" type="image/png" href="icon-192.png">
 
+
+    <!-- Google Fonts: Montserrat -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Montserrat', 'sans-serif'],
+            },
+            colors: {
+              gold: {
+                400: '#B20EB2',
+                500: '#FBC3FB',
+                600: '#8F0A8F',
+              }
+            },
+            animation: {
+              shimmer: 'shimmer 3s infinite',
+            },
+            keyframes: {
+              shimmer: {
+                '0%': { left: '-100%' },
+                '50%': { left: '200%' },
+                '100%': { left: '200%' },
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <style>
+        /* Custom Glassmorphism Styles */
+        .glass-card {
+
+            background: rgba(253, 154, 253,300);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+        }
+        
+        .glass-reflection {
+
+            background: linear-gradient(to bottom, rgba(255,255,255,0.05), transparent);
+        }
+
+        /* Fade In Animation State */
+        .fade-in-section {
+            background-color: #790879;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease-out, transform 1s ease-out;
+            visibility: hidden;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: none;
+            visibility: visible;
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.556.0",
+    "react": "https://aistudiocdn.com/react@^19.2.1",
+    "react/": "https://aistudiocdn.com/react@^19.2.1/"
+  }
+}
+</script>
 </head>
+<body class="bg-black text-white antialiased overflow-x-hidden">
+
+    <!-- Background Fixed sem imagem -->
+<div class="fixed inset-0 z-0 bg-black">
+    <!-- Dark overlay opcional -->
+    <div class="absolute inset-0 bg-black-300/50"></div>
+</div>
 
 
+    <!-- 2. Main Content Container -->
+    <div id="main-content" class="relative z-10 min-h-screen flex flex-col items-center max-w-md mx-auto fade-in-section">
+        
+        <!-- Top Spacer -->
+        <div class="h-10"></div>
+
+        <!-- 3. Glass Card Container -->
+        <div class="w-[90%] mb-8 rounded-2xl relative overflow-hidden glass-card">
+            <!-- Glossy Reflection -->
+            <div class="absolute top-0 left-0 w-full h-1/2 glass-reflection pointer-events-none"></div>
+
+            <!-- Profile Header -->
+            <div class="flex flex-col items-center text-center p-6 pb-2 relative z-10">
+                <div class="relative group cursor-pointer mb-4">
+                    <!-- Glow behind avatar -->
+                    <div class="absolute -inset-0.5 bg-gold-500 rounded-full opacity-50 blur group-hover:opacity-100 transition duration-1000"></div>
+                    <img src="logo2.png" alt="Claudio Calixto" class="relative w-28 h-28 rounded-full border-2 border-gold-500 object-cover shadow-lg">
+                </div>
+                <h1 class="text-2xl font-bold text-white tracking-wide mb-1">Mimos da Anna</h1>
+                <h2 class="text-sm font-medium text-gold-400 uppercase tracking-widest mb-3"><h2>Acessórios Femininos</h2>
+                <p class="text-gray-300 text-sm italic font-light max-w-xs leading-relaxed"><h1></h1></p>
+            </div>
+
+            <!-- Action Grid (Buttons) -->
+            <div class="grid grid-cols-2 gap-3 w-full px-6 mb-6 relative z-10">
+                <!-- WhatsApp -->
+                <a href="https://wa.me/5511958928793" target="_blank" class="group flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-gold-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <i class="fa-brands fa-whatsapp text-2xl mb-2 text-[#25D366]"></i>
+                    <span class="text-xs font-medium text-gray-200 tracking-wide">WhatsApp</span>
+                </a>
+                
+                <!-- Localização -->
+                <a href="https://maps.app.goo.gl/M76PtSydt8YzW8q96" target="_blank" class="group flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-gold-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-location-dot text-2xl mb-2 text-gold-400 group-hover:text-gold-300 transition-colors"></i>
+                    <span class="text-xs font-medium text-gray-200 tracking-wide">Localização</span>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:mimosdaanna.acessorio@gmail.com" class="group flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-gold-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <i class="fa-regular fa-envelope text-2xl mb-2 text-gold-400 group-hover:text-gold-300 transition-colors"></i>
+                    <span class="text-xs font-medium text-gray-200 tracking-wide">E-mail</span>
+                </a>
+
+                <!-- Site -->
+                <a href="https://mimosdaannaacessorios.lojavirtualnuvem.com.br/pulceiras//" target="_blank" class="group flex flex-col items-center justify-center p-4 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 hover:border-gold-500/50 transition-all duration-300 transform hover:scale-105 active:scale-95">
+                    <i class="fa-solid fa-globe text-2xl mb-2 text-gold-400 group-hover:text-gold-300 transition-colors"></i>
+                    <span class="text-xs font-medium text-gray-200 tracking-wide">Site</span>
+                </a>
+            </div>
+
+            <!-- Botão Guardar o Cartão (Instalar PWA) -->
+<div class="w-full px-6 mb-8 relative z-10">
+    <button onclick="instalarPWA()" class="relative w-full py-4 rounded-xl overflow-hidden bg-gradient-to-r from-gold-600 via-gold-500 to-gold-600 text-black font-bold tracking-widest uppercase shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(212,175,55,0.6)] transition-all duration-300 transform hover:-translate-y-1 active:scale-95 flex items-center justify-center gap-3 group">
+        <i class="fa-solid fa-download text-black"></i>
+        GUARDAR O CARTÃO
+        <div class="absolute top-0 -left-[100%] w-1/2 h-full bg-gradient-to-r from-transparent via-white/40 to-transparent skew-x-12 animate-shimmer"></div>
+    </button>
+</div>
 
 
-<body>
-    <!-- Conteúdo visível da página vai aqui -->
- <div class="banner_topo">
- 
-    <div class="texto-animado">
-           MIMOS da ANNA 
-          <br>
-          PULCEIRAS E COLARES 
-    
+            <!-- Featured Property -->
+            <div class="w-full px-6 mb-8 relative z-10">
+                <div class="flex items-center justify-between mb-3 px-1">
+                    <span class="text-xs font-semibold tracking-widest text-gray-400 uppercase"><h1>Aceito Encomendas.</h1></span>
+                    <span class="text-xs font-semibold text-gold-500">Disponível</span>
+                </div>
+                
+                <div class="group relative rounded-xl overflow-hidden cursor-pointer shadow-lg border border-white/10">
+                    <div class="aspect-[4/3] w-full overflow-hidden">
+                        <img src="fotocapaanna.jpg" alt="Mansão Horizon" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                    </div>
+                    
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex flex-col justify-end p-4">
+                        <h3 class="text-lg font-bold text-white mb-1 leading-tight">Acessórios  Femininos.</h3>
+                        <div class="flex items-center text-gray-300 text-xs mb-3">
+                            <i class="fa-solid fa-map-pin mr-1 text-gold-500"></i>
+                            São Paulo - SP
+                        </div>
+                        
+                        <div class="flex items-center justify-between">
+                            <span class="text-gold-400 font-bold text-lg">Instagram</span>
+                            <a href="https://www.instagram.com/mimosdaanna.acessorios" target="_blank"
+   class="bg-white/20 hover:bg-gold-500 hover:text-black backdrop-blur-md text-white text-xs px-3 py-2 rounded-lg transition-all duration-300 flex items-center">
+    Ver Instagram <i class="fa-solid fa-arrow-right ml-1"></i>
+</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Footer -->
+        <div class="mt-auto py-8 text-center border-t border-white/10 bg-black/40 backdrop-blur-md w-full">
+            <div class="flex justify-center space-x-8 mb-4">
+                <a href="https://www.instagram.com/mimosdaanna.acessorios/" class="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110"><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110"><i class="fa-brands fa-linkedin text-xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-gold-500 transition-colors transform hover:scale-110"><i class="fa-brands fa-facebook text-xl"></i></a> 
+            </div>
+            <p class="text-[10px] text-gray-500 font-light tracking-wide uppercase">© 2025 Direitos Autorais Claudio Calixto</p>
+        </div>
+
     </div>
-       </div>
 
-<div class="logo"> 
-    
-<img src="img/logo.png" alt="Logo">
+    <!-- Scripts -->
+    <script>
+        // 1. Fade In Animation on Load
+        window.addEventListener('load', () => {
+            const mainContent = document.getElementById('main-content');
+            // Small delay to ensure styles/fonts are ready for smooth effect
+            setTimeout(() => {
+                mainContent.classList.add('is-visible');
+            }, 100);
+        });
 
-</div>
+        // 2. vCard Generation Logic
+        function downloadVCard() {
+            const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Claudio Calixto
+N:Gold;Claudio;;;
+ORG:Estudio Claudio Calixto;
+TITLE:Cartao de Visita digital
+TEL;TYPE=CELL:+5511971345569
+EMAIL:claudioclc75@gmail.com
+URL:https://www.instagram.com/calixto6803/
+END:VCARD`;
 
-<!-- TÍTULO DA SESSÃO -->
-<section class="maisvendido">
-  <p>Mais Vendidos e Lançamentos</p>
-</section>
-
-<!-- CARROSSEL -->
-<div class="carousel">
-  <img src="img/carrocel/img_carrocel_01.png" alt="Carrocel 1">
-  <img src="img/carrocel/img_carrocel_02.png" alt="Carrocel 2">
-  <img src="img/carrocel/img_carrocel_03.png" alt="Carrocel 3">
-  <img src="img/carrocel/img_carrocel_04.png" alt="Carrocel 4">
-</div>
-
-
-<div class="whatsapp">
-    <p>WhatsApp (11) 9 7135569</p>
-    <p>Atendimento de Segunda a Sexta das 9:00 às 17:00 </p>
-      
-    <div> 
-     
-  </div>
-</div>
-
-<div class="retira">
-    
-    <p> Se quizer pode retirar o produto AV. Paulista 1313 Sabado ou Domingo das 10:00h as 17:00h </p>
-
-</div>
-
+            const blob = new Blob([vCardData], { type: 'text/vcard' });
+            const url = window.URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'Claudio_Calixto.vcf');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+    </script>
 
 
+<script>
+    // ==== INSTALAÇÃO DO PWA ====
+    let installPrompt = null;
 
-<!-- MENU INFERIOR -->
-<div class="menu">
-  <a href="#inicio" class="active">🏠 Início</a>
-  <a href="#feminino">👠 Feminino</a>
-  <a href="#masculino">👞 Masculino</a>
-  <a href="#infantil">👟 Infantil</a>
-  <a href="#contato">📩 Contato</a>
-</div>
+    window.addEventListener("beforeinstallprompt", (e) => {
+        e.preventDefault();
+        installPrompt = e;
+    });
 
-<!-- SCRIPT -->
-<script src="script.js"></script>
+    function instalarPWA() {
+        if (!installPrompt) {
+            alert("Para instalar o cartão, use o menu do navegador e toque em 'Adicionar à tela inicial'.");
+            return;
+        }
+
+        installPrompt.prompt();
+
+        installPrompt.userChoice.then((choice) => {
+            installPrompt = null;
+        });
+    }
+</script>
+
+
 
 </body>
 
@@ -80,14 +271,4 @@
 
 
 
-
 </html>
-
-
-
-
-
-
-
-
-

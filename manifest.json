@@ -1,6 +1,6 @@
 {
-  "name": "Claudio Calixto - Estúdio de Arte",
-  "short_name": "Cartão Claudio",
+  "name": "Mimos da Anna",
+  "short_name": " Mimos da Anna",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#000000",
@@ -19,3 +19,4 @@
     }
   ]
 }
+
